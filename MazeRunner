@@ -1,0 +1,46 @@
+import java.util.*;
+public class MazeRunner
+{
+    public void calpossibilities(long[][] maze,int m,int n)
+    {
+        for(int i=m-2;i>=0;i--)
+        {
+            for(int j=1;j<n;j++)
+            {
+                if(maze[i+1][j]>0)
+                {
+                    maze[i][j]=(maze[i][j]+maze[i+1][j])%100000000;
+                }
+                if(maze[i][j-1]>0)
+                {
+                    maze[i][j]=(maze[i][j]+maze[i][j-1])%100000000;
+                }
+            }
+        }
+        System.out.println(maze[0][n-1]);
+    }
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int m=sc.nextInt();
+		int n=sc.nextInt();
+		MazeRunner m1=new MazeRunner();
+		long maze[][]=new long[m][n];
+		for(int i=0;i<m;i++)
+		{
+		    for(int j=0;j<n;j++)
+		    {
+		        maze[i][j]=0;
+		    }
+		}
+		for(int i=0;i<m;i++)
+		{
+		    maze[i][0]=1;
+		}
+		for(int i=0;i<n;i++)
+		{
+		    maze[m-1][i]=1;
+		}
+		m1.calpossibilities(maze,m,n);
+		
+	}
+}
