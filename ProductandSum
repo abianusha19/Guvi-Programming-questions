@@ -77,7 +77,7 @@ public class ProductandSum {
               fin[l]=pro;
               l++;
               }
-              if(l==k1 && i==k)
+              if(l==k1 || i==k)
               break;
               i+=2;
           }
